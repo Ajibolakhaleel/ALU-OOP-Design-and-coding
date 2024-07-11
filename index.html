@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Residence Management System</title>
+    <script defer src="residence.js"></script>
+</head>
+<body>
+    <h1>University Residence Management System</h1>
+    <script>
+        // Creating instances of DormRoom and Apartment
+        const dorm = new DormRoom("Dorm 1", "123 University St", 300);
+        const apartment = new Apartment("Apt 1", "456 University St", 3);
+
+        // Creating an instance of Student and assigning a residence
+        const student = new Student("John Doe", "S12345", "Male");
+        student.assignResidence(dorm);
+
+        // Creating a MaintenanceRequest and assigning an employee
+        const maintenanceRequest = new MaintenanceRequest("Leaky faucet", "submitted", student);
+        maintenanceRequest.assignEmployee("Jane Smith");
+
+        // Displaying the details in the console
+        console.log(dorm);
+        console.log(apartment);
+        console.log(student);
+        console.log(maintenanceRequest);
+
+        // Displaying the details on the webpage
+        document.body.innerHTML += `
+            <h2>Dorm Room Details</h2>
+            <p>Name: ${dorm.name}</p>
+            <p>Address: ${dorm.address}</p>
+            <p>Size: ${dorm.size} sq ft</p>
+            <p>Occupied: ${dorm.isOccupied}</p>
+
+            <h2>Apartment Details</h2>
+            <p>Name: ${apartment.name}</p>
+            <p>Address: ${apartment.address}</p>
+            <p>Number of Bedrooms: ${apartment.numberOfBedrooms}</p>
+            <p>Occupied: ${apartment.isOccupied}</p>
+
+            <h2>Student Details</h2>
+            <p>Name: ${student.name}</p>
+            <p>Student ID: ${student.studentId}</p>
+            <p>Gender: ${student.gender}</p>
+            <p>Residence: ${student.residence.name}</p>
+
+            <h2>Maintenance Request Details</h2>
+            <p>Description: ${maintenanceRequest.description}</p>
+            <p>Status: ${maintenanceRequest.status}</p>
+            <p>Submitted by: ${maintenanceRequest.student.name}</p>
+            <p>Assigned Employee: ${maintenanceRequest.employee}</p>
+        `;
+    </script>
+</body>
+</html>
